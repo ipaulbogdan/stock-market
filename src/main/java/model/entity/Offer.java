@@ -10,8 +10,8 @@ import java.math.BigInteger;
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Table(name = "offers")
 public class Offer extends BaseEntity {
 
@@ -22,7 +22,7 @@ public class Offer extends BaseEntity {
     private BigInteger numberOfStocks;
 
     @Column
-    private BigInteger price;
+    private String price;
 
 
 

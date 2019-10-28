@@ -1,5 +1,6 @@
 package model.entity;
 
+
 import lombok.*;
 
 import javax.persistence.Column;
@@ -10,18 +11,21 @@ import java.math.BigInteger;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Table(name = "requests")
-public class Request extends BaseEntity {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Table(name = "transactions")
+public class Transaction extends BaseEntity{
 
-    @Column(name = "stock_name")
+    @JoinColumn(name = "seller")
+    private User user_seller;
+
+    @JoinColumn(name = "buyer")
+    private User user_buyer;
+
+    @Column
     private String stockName;
 
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @Column(name = "number_of_stocks")
+    @Column
     private BigInteger numberOfStocks;
 
     @Column
