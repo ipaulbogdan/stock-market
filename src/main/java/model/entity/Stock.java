@@ -14,7 +14,7 @@ import java.math.BigInteger;
 @Getter
 @Entity
 @Table(name = "stocks")
-public class Stock {
+public class Stock extends BaseEntity {
 
     @Column
     private String name;

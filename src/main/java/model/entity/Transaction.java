@@ -14,7 +14,7 @@ import java.math.BigInteger;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Table(name = "transactions")
-public class Transaction extends BaseEntity{
+public class Transaction extends BaseEntity {
 
     @JoinColumn(name = "seller")
     private User user_seller;
