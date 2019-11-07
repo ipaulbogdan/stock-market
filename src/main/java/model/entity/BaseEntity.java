@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,16 +16,20 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "public_identifier")
     private String publicIdentifier;
 
-    @Column
+    @Column(name = "date_created")
     private LocalDateTime dateCreated;
 
     @PrePersist
     protected  void initializeDate() {
         if(dateCreated == null) {
             dateCreated = LocalDateTime.now();
+        }
+
+        if(publicIdentifier == null) {
+            publicIdentifier = UUID.randomUUID().toString();
         }
     }
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="userPersistenceUnit"
+                      transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>model.entity.User</class>
+        <class>model.entity.Stock</class>
+        <class>model.entity.Offer</class>
+        <class>model.entity.BaseEntity</class>
+        <class>model.entity.Transaction</class>
+        <class>model.entity.Request</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver"
+                      value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost:5432/stock_market" />
+            <property name="javax.persistence.jdbc.user" value="stock_market" />
+            <property name="javax.persistence.jdbc.password" value="stock_market" />
+            <property name="dialect"
+                      value="org.hibernate.dialect.PostgreSQL81Dialect" />
+            <property
+                    name="hibernate.transaction.flush_before_completion" value="true" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>
