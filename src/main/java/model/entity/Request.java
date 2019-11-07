@@ -2,9 +2,7 @@ package model.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigInteger;
 
 @Getter
@@ -12,6 +10,7 @@ import java.math.BigInteger;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Entity
 @Table(name = "requests")
 public class Request extends BaseEntity {
 
@@ -19,6 +18,7 @@ public class Request extends BaseEntity {
     private String stockName;
 
     @JoinColumn(name = "user_id")
+    @OneToOne
     private User user;
 
     @Column(name = "number_of_stocks")

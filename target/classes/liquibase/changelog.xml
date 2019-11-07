@@ -129,5 +129,67 @@
 
     </changeSet>
 
+    <changeSet id="data-0.1" author="pidorasi">
+        <insert tableName="users">
+            <column name="username" value="pidorasi"/>
+            <column name="public_identifier" value="5b5243eb-1e8c-4acf-b3ed-575ad43517c2"/>
+            <column name="date_created" value="2019-10-28 12:00:00.000000"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="dcirlugea"/>
+            <column name="public_identifier" value="6b5243eb-1e8c-4acf-b3ed-575ad43517c2"/>
+            <column name="date_created" value="2019-10-28 12:00:00.000000"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="fhanches"/>
+            <column name="public_identifier" value="7b5243eb-1e8c-4acf-b3ed-575ad43517c2"/>
+            <column name="date_created" value="2019-10-28 12:00:00.000000"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="rdobos"/>
+            <column name="public_identifier" value="8b5243eb-1e8c-4acf-b3ed-575ad43517c2"/>
+            <column name="date_created" value="2019-10-28 12:00:00.000000"/>
+        </insert>
+    </changeSet>
 
+    <changeSet id="structural-0.2" author="pidorasi">
+        <createTable tableName="transactions">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pkey_transactions_id"/>
+            </column>
+            <column name="public_identifier" type="VARCHAR(40)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uq_transactions_public_identifier"/>
+            </column>
+            <column name="seller" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="buyer" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stock_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_stocks" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(10,3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="transactions"
+                                 baseColumnNames="seller"
+                                 constraintName="fk_transactions_seller_users_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"
+                                 onDelete="NO ACTION"/>
+        <addForeignKeyConstraint baseTableName="transactions"
+                                 baseColumnNames="buyer"
+                                 constraintName="fk_transactions_buyer_users_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"
+                                 onDelete="NO ACTION"/>
+    </changeSet>
 </databaseChangeLog>
